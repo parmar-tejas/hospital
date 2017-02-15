@@ -1,4 +1,4 @@
-class AdminUser < ApplicationRecord
+class User < ApplicationRecord
 
   devise(
     :database_authenticatable,
@@ -36,14 +36,12 @@ class AdminUser < ApplicationRecord
   validates(
     :first_name,
     length: { in: 3..255 },
-    uniqueness: true,
     presence: true
   )
 
   validates(
     :last_name,
     length: { in: 3..255 },
-    uniqueness: true,
     presence: true
   )
 end

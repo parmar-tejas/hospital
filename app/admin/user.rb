@@ -1,4 +1,4 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, :mobile_number, :first_name, :last_name
 
   index do
@@ -25,7 +25,7 @@ ActiveAdmin.register AdminUser do
   filter :disabled
 
   form do |f|
-    f.inputs "Admin Details" do
+    f.inputs "User Details" do
       f.input :mobile_number
       f.input :first_name
       f.input :last_name
