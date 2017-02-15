@@ -18,7 +18,7 @@ class DoctorMailer < ActionMailer::Base
     @last_name  = appointment.try(:doctor).try(:last_name)
     @title = "User Booked An Appointment"
     mail(
-      to: appointment.try(:doctor).try(:email), 
+      to: appointment.try(:email), 
       subject: 'Your Appointment Booked.'
     )
   end
