@@ -27,4 +27,8 @@ class TimeSlot < ApplicationRecord
     end
     return ary
   end
+
+  def time_slot_data
+    return "#{self.time_from.strftime("%I:%M %p")} To #{self.time_to.strftime("%I:%M %p")}"
+  end
 end

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/opd_schedule', to: "patient_care#opd_schedule"
   get '/find_a_doctor', to: "patient_care#find_a_doctor"
   get '/book_an_appointment', to: "patient_care#book_an_appointment"
+  post '/create_an_appointment', to: "patient_care#create_an_appointment"
 
 
   get '/post_a_query', to: "contact_us#post_a_query"
