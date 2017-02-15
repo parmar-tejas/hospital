@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   pool: 30
   username: root
-  password: root
+  password: rootpassword
 
 development:
   <<: *default

@@ -1,0 +1,2 @@
+class ContectUsController < ApplicationController
+end
