@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'mysql2'
+gem 'pg'
 gem 'dotenv-rails'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -15,9 +15,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'sinatra', require: nil
 gem 'paperclip'
-gem 'active_admin_editor', github: 'ejholmes/active_admin_editor'
 gem 'country-select'
-gem 'active_admin_theme'
 gem 'friendly_id', '~> 5.1'
 
 group :development, :test do

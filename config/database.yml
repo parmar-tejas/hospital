@@ -1,9 +1,10 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  pool: 30
-  username: root
-  password: rootpassword
+  pool: 5
+  username: postgres
+  password: root
+  host: localhost
 
 development:
   <<: *default
@@ -15,6 +16,7 @@ test:
 
 production:
   <<: *default
+  database: hospital
   # database: <%= ENV['PRAYER_DATABASE_DATABASE'] %>
   # username: <%= ENV['PRAYER_DATABASE_USERNAME'] %>
   # password: <%= ENV['PRAYER_DATABASE_PASSWORD'] %>

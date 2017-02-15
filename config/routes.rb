@@ -35,6 +35,13 @@ Rails.application.routes.draw do
   get '/book_an_appointment', to: "patient_care#book_an_appointment"
 
 
+  get '/post_a_query', to: "contact_us#post_a_query"
+  get '/careers', to: "contact_us#careers"
+  get '/ask_fortis_escorts', to: "contact_us#ask_fortis_escorts"
+  get '/location', to: "contact_us#location"
+
+
+
   # devise_for :users
   # root "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

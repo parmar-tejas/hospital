@@ -10,23 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215164039) do
+ActiveRecord::Schema.define(version: 20170215172956) do
 
-  create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
-    t.text     "body",          limit: 65535
-    t.string   "resource_id",                 null: false
-    t.string   "resource_type",               null: false
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
     t.string   "author_type"
     t.integer  "author_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
-  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "mobile_number"
@@ -47,7 +50,28 @@ ActiveRecord::Schema.define(version: 20170215164039) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "doctors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.integer  "time_slot_id"
+    t.string   "first_name",        limit: 255
+    t.string   "last_name",         limit: 255
+    t.string   "mobile_number",     limit: 12
+    t.string   "email",                         default: "",    null: false
+    t.date     "date_of_birth"
+    t.date     "appointment_date"
+    t.string   "gender",            limit: 7
+    t.text     "address"
+    t.text     "reason_for_visit"
+    t.string   "city",              limit: 255
+    t.string   "state",             limit: 255
+    t.string   "method_of_contact", limit: 5
+    t.boolean  "domestic",                      default: true
+    t.boolean  "routine_visit",                 default: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  create_table "doctors", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "mobile_number"
@@ -68,7 +92,15 @@ ActiveRecord::Schema.define(version: 20170215164039) do
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "time_slots", force: :cascade do |t|
+    t.time     "time_from"
+    t.time     "time_to"
+    t.boolean  "disabled",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "mobile_number"
